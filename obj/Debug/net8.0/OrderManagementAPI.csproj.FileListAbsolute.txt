@@ -120,3 +120,4 @@ C:\Users\97250\source\repos\OrderManagementAPI\OrderManagementAPI\bin\Debug\net8
 C:\Users\97250\source\repos\OrderManagementAPI\OrderManagementAPI\bin\Debug\net8.0\runtimes\win-x64\native\krb5_64.dll
 C:\Users\97250\source\repos\OrderManagementAPI\OrderManagementAPI\bin\Debug\net8.0\runtimes\win-x64\native\krbcc64.dll
 C:\Users\97250\source\repos\OrderManagementAPI\OrderManagementAPI\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+C:\Users\97250\source\repos\OrderManagementAPI\OrderManagementAPI\obj\Debug\net8.0\OrderManagementAPI.sourcelink.json

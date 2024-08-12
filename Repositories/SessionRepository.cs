@@ -17,10 +17,10 @@ namespace OrderManagementAPI.Repositories
         public async Task<Session> LoginAsync(string accntCode, string sessTmplId)
         {
             // Perform the necessary join
-            var session = await (from Wapp in _context.Wapp
-                                 join Script in _context.Script on Wapp.ACCNT_CODE equals Script.ACCNT_CODE
-                                 join Sessions in _context.Sessions on Script.CODE equals Sessions.SESS_TMPL_ID
-                                 where Wapp.ACCNT_CODE == accntCode && Sessions.SESS_TMPL_ID == sessTmplId
+            var session = await (from wapp in _context.wapp
+                                 join scripts in _context.scripts on wapp.ACCNT_CODE equals scripts.ACCNT_CODE
+                                 join Sessions in _context.sessions on scripts.CODE equals Sessions.SESS_TMPL_ID
+                                 where wapp.ACCNT_CODE == accntCode && Sessions.SESS_TMPL_ID == sessTmplId
                                  select Sessions).FirstOrDefaultAsync();
 
             return session;
@@ -29,7 +29,7 @@ namespace OrderManagementAPI.Repositories
 
         public async Task<List<Session>> GetAllSessionsAsync()
         {
-            return await _context.Sessions.ToListAsync();
+            return await _context.sessions.ToListAsync();
         }
 
         //public async Task<Session> GetSessionByIdAsync(int id)

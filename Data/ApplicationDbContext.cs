@@ -10,8 +10,8 @@ namespace OrderManagementAPI.Data
         {
         }
 
-        public DbSet<Session> Sessions { get; set; }
-        public DbSet<Wapp> Wapp { get; set; }
-        public DbSet<Scripts> Script { get; set; }
+        public DbSet<Session> sessions { get; set; }
+        public DbSet<Wapp> wapp { get; set; }
+        public DbSet<Scripts> scripts { get; set; }
     }
 }
