@@ -26,16 +26,35 @@ namespace OrderManagementAPI.Repositories
             return session;
         }
 
-
         public async Task<List<Session>> GetAllSessionsAsync()
         {
             return await _context.sessions.ToListAsync();
         }
 
-        //public async Task<Session> GetSessionByIdAsync(int id)
-        //{
-        //    return await _context.Sessions.FindAsync(id);
-        //}
+        public async Task<List<Session>> GetSessionsByCustomerNameAsync(string customerName)
+        {
+            return await _context.sessions
+                .Where(s => s.CUST_NAME == customerName)
+                .ToListAsync();
+        }
+
+        public async Task<List<Scripts>> GetCustomerScriptsAsync(string accountCode)
+        {
+            var scripts = await _context.scripts
+                                .Where(s => s.ACCNT_CODE == accountCode)
+                                .ToListAsync();
+
+            return scripts;
+        }
+
+        public async Task<List<Session>> GetSessionsByScriptCodeAsync(string code)
+        {
+            var Session = await _context.sessions
+                                .Where(s => s.SESS_TMPL_ID == code).ToListAsync();
+
+            return Session;
+
+        }
 
 
     }

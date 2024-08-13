@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OrderManagementAPI.Data;
 using OrderManagementAPI.Interface;
 using OrderManagementAPI.Models;
+using System.Reflection.Metadata;
 
 namespace OrderManagementAPI.Controllers
 {
@@ -28,11 +30,52 @@ namespace OrderManagementAPI.Controllers
             }
             return Unauthorized("Invalid ACCNT_CODE or SESS_TMPL_ID");
         }
-        [HttpGet("all")]
+        [HttpGet("get-all-session")]
         public async Task<IActionResult> getSession()
         {
             var session = await _sessionRepository.GetAllSessionsAsync();
             return Ok(session);
+        }
+        [HttpGet("get-session-name/{customerName}")]
+        public async Task<IActionResult> getSessionByCustomer(string customerName)
+        {
+            try
+            {
+                var session = await _sessionRepository.GetSessionsByCustomerNameAsync(customerName);
+                return Ok(session);
+            }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, new { message = ex.Message });
+            }
+        }
+
+        [HttpGet("get-script/{accountCode}")]
+        public async Task<IActionResult> GetCustomerScript(string accountCode)
+        {
+            try
+            {
+                var script = await _sessionRepository.GetCustomerScriptsAsync(accountCode);
+                return Ok(script);
+            }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, new { message = ex.Message });
+            }
+        }
+
+        [HttpGet("get-session-code/{code}")]
+        public async Task<IActionResult> GetCustomerSession(string code)
+        {
+            try
+            {
+                var session = await _sessionRepository.GetSessionsByScriptCodeAsync(code);
+                return Ok(session);
+            }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(500, new { message = ex.Message });
+            }
         }
     }
 }

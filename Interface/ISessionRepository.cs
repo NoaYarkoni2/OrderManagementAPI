@@ -6,7 +6,9 @@ namespace OrderManagementAPI.Interface
     {
         Task<Session> LoginAsync(string accntCode, string sessTmplId);
         Task<List<Session>> GetAllSessionsAsync();
-        //Task<IEnumerable<Session>> GetAllSessionsAsync();
-        //Task<Session> GetSessionByIdAsync(int id);
+        Task<List<Session>> GetSessionsByCustomerNameAsync(string customerName);
+        Task<List<Scripts>> GetCustomerScriptsAsync(string accountCode);
+        Task<List<Session>> GetSessionsByScriptCodeAsync(string code);
+
     }
 }
