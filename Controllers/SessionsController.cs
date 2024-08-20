@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.DataProtection;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ namespace OrderManagementAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class SessionsController : ControllerBase
     {
         private readonly ISessionRepository _sessionRepository;
