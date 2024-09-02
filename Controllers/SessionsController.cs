@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using OrderManagementAPI.Data;
 using OrderManagementAPI.Interface;
 using OrderManagementAPI.Models;
+using Org.BouncyCastle.Asn1.Ocsp;
 using System.Reflection.Metadata;
 
 namespace OrderManagementAPI.Controllers
@@ -79,5 +80,21 @@ namespace OrderManagementAPI.Controllers
                 return StatusCode(500, new { message = ex.Message });
             }
         }
+
+        [HttpPost("reset-session")]
+        public async Task<IActionResult> ResetSession(string sessionId)
+        {        
+            try
+            {
+                var result = await _sessionRepository.ResetSessionAsync(sessionId);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error occurred: {ex.Message}");
+            }
+        }
+
+     
     }
 }
