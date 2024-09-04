@@ -81,20 +81,22 @@ namespace OrderManagementAPI.Controllers
             }
         }
 
+
+
         [HttpPost("reset-session")]
         public async Task<IActionResult> ResetSession(string sessionId)
-        {        
+        {
             try
             {
-                var result = await _sessionRepository.ResetSessionAsync(sessionId);
-                return Ok(result);
+                await _sessionRepository.ResetMessageStatusAsync(sessionId);
+                return Ok($"Session {sessionId} and its messages have been reset.");
             }
             catch (Exception ex)
             {
                 return BadRequest($"Error occurred: {ex.Message}");
             }
+   
         }
 
-     
     }
 }

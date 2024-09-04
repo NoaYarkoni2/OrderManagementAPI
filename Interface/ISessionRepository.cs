@@ -9,7 +9,8 @@ namespace OrderManagementAPI.Interface
         Task<List<Session>> GetSessionsByCustomerNameAsync(string customerName);
         Task<List<Scripts>> GetCustomerScriptsAsync(string accountCode);
         Task<List<Session>> GetSessionsByScriptCodeAsync(string code);
-        Task<string> ResetSessionAsync(string sessionId);
+        Task ResetSessionAsync(string sessionId);
+        Task ResetMessageStatusAsync(string sessionId);
 
 
     }

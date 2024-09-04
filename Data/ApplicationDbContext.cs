@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Google.Protobuf;
+using Microsoft.EntityFrameworkCore;
 using OrderManagementAPI.Models;
 
 namespace OrderManagementAPI.Data
@@ -13,5 +14,6 @@ namespace OrderManagementAPI.Data
         public DbSet<Session> sessions { get; set; }
         public DbSet<Wapp> wapp { get; set; }
         public DbSet<Scripts> scripts { get; set; }
+        public DbSet<Message> messages { get; set; }
     }
 }
